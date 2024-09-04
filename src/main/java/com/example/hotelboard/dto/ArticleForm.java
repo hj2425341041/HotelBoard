@@ -5,6 +5,7 @@ import com.example.hotelboard.entity.Users;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 // DTO (Data Transfer Object) 클래스
@@ -22,7 +23,7 @@ public class ArticleForm {
     // 게시물 내용
     private String content;
     // 게시물 생성 시간
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
 
     // DTO 객체를 Articles 엔티티로 변환하는 메서드
@@ -32,6 +33,12 @@ public class ArticleForm {
         // Users 객체를 생성할 때 memberId를 사용
         // createdAt에는 현재 날짜를 설정
     }
+
+//    // 포맷팅된 날짜를 반환하는 메서드
+//    public String getFormattedCreatedAt() {
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+//        return formatter.format(createdAt);
+//    }
 
 //    public Articles toEntity(Users user) {
 //        return new Articles(id, articleType, user, title, content, new Date());

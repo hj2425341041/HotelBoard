@@ -36,7 +36,7 @@
         }
         th, td {
             padding: 1em;
-            text-align: center; /* 텍스트 가운데 정렬 */
+            text-align: center;
         }
         th {
             background-color: #3eb489; /* 민트 계열 헤더 색상 */
@@ -55,8 +55,12 @@
             margin: auto;
             padding: 1em;
         }
+        .status-available {
+            color: #00796b; /* 민트 계열 색상 */
+        }
         .status-unavailable {
             color: #e53935; /* 빨간색 글씨 */
+            font-weight: bold;
         }
         .status-available a {
             color: #00796b; /* 링크 색상 (민트 계열) */
@@ -66,9 +70,6 @@
         .status-available a:hover {
             text-decoration: underline; /* 호버 시 밑줄 추가 */
             color: #004d40; /* 호버 시 더 짙은 민트색 */
-        }
-        .status-available span {
-            color: #00796b; /* 민트 계열 색상 */
         }
     </style>
 </head>

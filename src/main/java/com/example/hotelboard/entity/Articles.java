@@ -42,27 +42,26 @@ public class Articles {
     private String content;
 
     // 게시물 생성 시간을 저장하는 컬럼
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP) // 날짜와 시간을 포함하는 형식
-    private Date createdAt;
+    @Column
+    private Date createdAt = new Date();
 
     // 새로운 Article을 생성할 때 사용되는 생성자
-    public Articles(Long articleType, Users memberId, String title, String content, Date createdAt) {
+    public Articles(Long articleType, Users memberId, String title, String content, Date date) {
         this.articleType = articleType;
         this.memberId = memberId;
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
+        this.createdAt = new Date();
     }
 
     // 기존 Article을 수정할 때 사용되는 생성자
-    public Articles(Long id, Long articleType, Users memberId, String title, String content, Date createdAt) {
+    public Articles(Long id, Long articleType, Users memberId, String title, String content, Date date) {
         this.id = id;
         this.articleType = articleType;
         this.memberId = memberId;
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
+        this.createdAt = new Date();
     }
 
     // 기존의 Article을 업데이트할 때 사용되는 메서드
@@ -75,8 +74,13 @@ public class Articles {
         if (articles.content != null)
             this.content = articles.content;
 
-        // 새로운 기사 타입이 null이 아닌 경우 업데이트
+        // 새로운 게시글 타입이 null이 아닌 경우 업데이트
         if (articles.articleType != null)
             this.articleType = articles.articleType;
+
+//        // 새로운 날짜가 null이 아닌 경우 업데이트
+//        if (articles.createdAt != null)
+//            this.createdAt = articles.createdAt;
     }
+
 }

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -53,7 +54,7 @@ public class ArticleController {
         }
 
         // DTO to Entity
-        Articles articles = new Articles(form.getArticleType(), user, form.getTitle(), form.getContent(), form.getCreatedAt());
+        Articles articles = new Articles(form.getArticleType(), user, form.getTitle(), form.getContent(), new Date());
         log.info(articles.toString());
 
         // Entity -> DB : use Repository
@@ -113,8 +114,8 @@ public class ArticleController {
     // 게시물 업데이트 처리 메서드
     @PostMapping("/articles/update")
     public String update(@ModelAttribute ArticleForm form) {
-        log.info("Received ArticleForm: id={}, title={}, content={}, memberId={}, articleType={}",
-                form.getId(), form.getTitle(), form.getContent(), form.getMemberId(), form.getArticleType());
+        log.info("Received ArticleForm: id={}, title={}, content={}, memberId={}, articleType={}, createdAt={}",
+                form.getId(), form.getTitle(), form.getContent(), form.getMemberId(), form.getArticleType(), form.getCreatedAt());
 
         // UserRepository에서 Users 객체를 조회
         Users user = userRepository.findById(form.getMemberId()).orElse(null);
@@ -131,7 +132,7 @@ public class ArticleController {
             dbArticles.setMemberId(user);
             dbArticles.setTitle(form.getTitle());
             dbArticles.setContent(form.getContent());
-            dbArticles.setCreatedAt(form.getCreatedAt());
+            dbArticles.setCreatedAt(new Date());
 
             // 변경된 게시물 저장
             articleRepository.save(dbArticles);

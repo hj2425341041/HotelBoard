@@ -27,8 +27,7 @@ public class Reservations {
     @Column
     private Date checkOut;
 
-//    @ManyToOne
-//    @JoinColumn(name = "room_id") // 외래 키 설정
+    @Column
     private Long roomId;
 
     @Column
