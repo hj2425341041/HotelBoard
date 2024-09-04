@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>KOPO HOTEL</title>
+    <style>
+        .navbar {
+            background-color: #e0f7fa; /* Light mint background color */
+        }
+        .navbar-brand img {
+            width: 40px;
+            height: 30px;
+            object-fit: cover;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.2rem; /* Slightly larger font size for brand */
+        }
+        .navbar-nav .nav-link {
+            color: #00796b; /* Mint color for links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #004d40; /* Darker mint color for hover effect */
+        }
+        .navbar-toggler {
+            border-color: #00796b; /* Mint color for the toggler border */
+        }
+
+        .form-control {
+            border-color: #00796b; /* Mint color for search input border */
+        }
+        .btn-outline-success {
+            color: #00796b; /* Mint color for button text */
+            border-color: #00796b; /* Mint color for button border */
+        }
+        .btn-outline-success:hover {
+            background-color: #00796b; /* Mint color for button background on hover */
+            color: #fff; /* White color for button text on hover */
+        }
+        .login-btn {
+            margin-left: auto; /* Pushes the button to the right */
+            border-radius: 20px; /* Rounded corners */
+            padding: 0.5rem 1rem; /* Padding for the button */
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="top">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/kopo_logo.png" alt="KOPO HOTEL Logo">
+                KOPO HOTEL
+            </a>
+
+            <!-- 로그인 또는 로그아웃 버튼 -->
+            <div th:if="${session.user != null}">
+                <a href="/membership/login" class="btn btn-outline-success login-btn">Logout</a>
+            </div>
+            <div th:if="${session.user == null}">
+                <a href="/membership/login" class="btn btn-outline-success login-btn">Login</a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            호텔 객실 소개
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <li><a class="dropdown-item" href="/hotel/a_01">Sweet Room</a></li>
+                            <li><a class="dropdown-item" href="/hotel/a_02">Deluxe Room</a></li>
+                            <li><a class="dropdown-item" href="/hotel/a_03">Standard Room</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/hotel/b_01">지도</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            주변 관광지
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <li><a class="dropdown-item" href="/hotel/c_01">중앙공원</a></li>
+                            <li><a class="dropdown-item" href="/hotel/c_02">불곡산</a></li>
+                            <li><a class="dropdown-item" href="/hotel/c_03">율동공원</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            예약하기
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <li><a class="dropdown-item" href="/reserveNew">예약하기</a></li>
+                            <li><a class="dropdown-item" href="/reserveList">예약현황</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            호텔 소식
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                            <li><a class="dropdown-item" href="/articles">전체 게시글</a></li>
+                            <li><a class="dropdown-item" href="/articles?articleType=1">공지사항</a></li>
+                            <li><a class="dropdown-item" href="/articles?articleType=2">이용후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- Display success message -->
+<div th:if="${message}" class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+        <span th:text="${message}"></span>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<!-- Display error message -->
+<div th:if="${error}" class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Error:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+        <span th:text="${error}"></span>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9aN4fL6LP19BzFOW8vlH5Y5HBlpH8G0Q6FIwU2aKq8tD/wxGFr6J" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-4sC8xR0P2OH6+jpD04/0V6obtd7CH8gq2Jlb3+H6jEJgS4x8i4Qf/7n+gq3g8kgF" crossorigin="anonymous"></script>
+</body>
+</html>

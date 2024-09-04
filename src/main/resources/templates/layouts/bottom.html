@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Footer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQjI6K2bHbSTFz2L62UfnHvq4f2EdlI5gE8A1h20Ns2NT8HBxCCwl5KMp6Jd" crossorigin="anonymous">
+  <style>
+    footer {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+    .footer-link {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+    .footer-text {
+        font-size: 0.9rem;
+    }
+    .footer-text-bold {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<!-- Footer Section -->
+<div th:fragment="bottom">
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="footer-text-bold mb-1">KOPO HOTEL</p>
+          <p class="footer-text">주소 : [13590] 경기도 성남시 분당구 황새울로 329번길 5(서현동 272-6)</p>
+          <p class="footer-text">
+            <a href="/home" class="footer-link">홈페이지 가기</a>
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="footer-text">TEL : 031)696-8800</p>
+          <p class="footer-text">FAX : 031)696-8809</p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-between">
+            <div>
+              <a href="/hotel/b_01" class="footer-link">지도</a> |
+              <a href="#" class="footer-link">객실 안내</a>
+            </div>
+            <div>
+              <a href="/articles" class="footer-link">문의하기</a> |
+              <a href="https://www.agoda.com/ko-kr/info/contact.html?ds=fd%2FdppBtYGHfyd4d" class="footer-link">자주 묻는 질문</a> |
+              <a href="https://www.agoda.com/ko-kr/info/termsofuse.html?ds=yqneoz74mYr1uAoJ" class="footer-link">이용 약관</a> |
+              <a href="https://www.kopo.ac.kr/ctc/content.do?menu=5291" class="footer-link">개인정보 처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4 border-light">
+    <div class="text-center">
+      <p class="footer-text mb-0">&copy; 2024 Kopo Hotel | 사랑으로 다시 시작하는 우리, 함께 하는 삶</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

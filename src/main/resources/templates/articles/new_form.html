@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Article</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    .button-container {
+        display: flex;
+        justify-content: space-between; /* Distribute space between buttons */
+        align-items: center; /* Center buttons vertically */
+        margin: 10px 0; /* Vertical margin adjustment */
+    }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #007bff; /* Default button color */
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Button hover color */
+    }
+
+    .btn-mint {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #3eb489; /* Mint color */
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-mint:hover {
+        background-color: #2a9d8f; /* Darker mint color */
+    }
+  </style>
+</head>
+<body>
+<!-- Top Layout -->
+<div th:insert="~{/layouts/top :: top}"></div>
+
+<!-- Content part -->
+<form class="container" th:action="@{/articles/create}" method="post">
+  <div class="mb-3">
+    <label class="form-label" for="title">제목</label>
+    <input type="text" class="form-control" id="title" name="title" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">작성자</label>
+    <input type="text" class="form-control" id="userId" name="userId" th:value="${userId}" readonly />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">게시판</label>
+    <select id="articleType" name="articleType" required>
+      <option value="1">공지사항</option>
+      <option value="2">이용후기</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="content">내용</label>
+    <textarea class="form-control" id="content" rows="3" name="content"></textarea>
+  </div>
+
+  <div class="button-container">
+    <button type="submit" class="btn btn-primary">등록</button>
+    <a href="/articles" class="btn btn-mint">목록</a>
+  </div>
+</form>
+
+<!-- Bottom Layout -->
+<div th:insert="~{/layouts/bottom :: bottom}"></div>
+</body>
+</html>

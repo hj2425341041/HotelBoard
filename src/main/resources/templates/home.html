@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <title>KOPO HOTEL</title>
+  <style>
+    .hero-section {
+      position: relative;
+      height: 550px;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: slide 10s infinite;
+    }
+
+    .hero-background:nth-child(1) {
+      background-image: url('/background.jpg');
+      animation-delay: 0s;
+    }
+
+    .hero-background:nth-child(2) {
+      background-image: url('/2.jpg');
+      animation-delay: 5s;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .hero-content {
+      position: absolute; /* 절대 위치로 조정 */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* 수직 및 수평 중앙 정렬 */
+      z-index: 1;
+      padding: 0 20px; /* 여백 조정 */
+      color: white; /* 텍스트 색상 조정 */
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0; /* 여백 제거 */
+    }
+
+    .hero-section p {
+      font-size: 1.25rem;
+      margin: 0; /* 여백 제거 */
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #00796b;
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .feature-description {
+      font-size: 1rem;
+      color: #555555;
+    }
+
+    .footer {
+      background-color: #004d40;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Layout -->
+<div th:insert="~{/layouts/top :: top}"></div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-background"></div>
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <div class="container">
+      <h1>KOPO HOTEL</h1>
+      <p>최고의 5성급 호텔에서의 특별한 경험을 제공합니다. KOPO HOTEL에 오신 것을 환영합니다!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="container my-5">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="feature-icon">
+        <i class="bi bi-house-heart"></i>
+      </div>
+      <h3 class="feature-title">안전</h3>
+      <p class="feature-description">저희 호텔은 고객님의 안전을 최우선으로 생각합니다. 첨단 보안 시스템과 신뢰할 수 있는 서비스로 안심하고 머무실 수 있습니다.</p>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-icon">
+        <i class="bi bi-heart"></i>
+      </div>
+      <h3 class="feature-title">행복</h3>
+      <p class="feature-description">편안하고 행복한 시간을 보낼 수 있도록 최상의 시설과 서비스를 제공합니다. 모든 순간이 특별하게 느껴지실 것입니다.</p>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-icon">
+        <i class="bi bi-people"></i>
+      </div>
+      <h3 class="feature-title">커뮤니티 참여</h3>
+      <p class="feature-description">다양한 커뮤니티 활동과 지역 사회와의 연계를 통해, 고객님께 더 풍성한 경험을 제공합니다. 함께하는 공간에서 새로운 인연을 만나보세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom Layout -->
+<div th:insert="~{/layouts/bottom :: bottom}"></div>
+
+<!-- Success Message for Popup -->
+<div id="successMessage" style="display: none;" th:if="${success}" th:text="${success}"></div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-5n3h/qkN6LPtM5D8vTZ9MEyukKlQ1uE5fZ1H5n2ZKlqVDcZ8sI0pHBCY6K0K8P" crossorigin="anonymous"></script>
+<script>
+  window.onload = function() {
+    const successMessage = document.getElementById('successMessage');
+    if (successMessage && successMessage.textContent) {
+      alert(successMessage.textContent);
+    }
+  }
+</script>
+</body>
+</html>
