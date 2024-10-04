@@ -3,6 +3,7 @@ package com.example.hotelboard.service;
 import com.example.hotelboard.dto.UsersForm;
 import com.example.hotelboard.entity.Users;
 import com.example.hotelboard.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,9 @@ public class UserServiceImpl implements UserService {
     public Users signIn(String userId, String password) {
         return userRepository.findByUserIdAndPassword(userId, password);
     }
+    @Override
+    public Users getCurrentUser(HttpSession session) {
+        return (Users) session.getAttribute("user");
+    }
+
 }
